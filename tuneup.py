@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Tuneup assignment"""
-
-__author__ = "peter mayor"
-
 import cProfile
 import pstats
 import timeit
+
+"""Tuneup assignment"""
+
+__author__ = "peter mayor"
 
 
 def profile(func):
@@ -59,7 +59,7 @@ def find_duplicate_movies(src):
         else:
             seen[movie] = 1
 
-    print (duplicates)
+    print(duplicates)
 
 
 @profile
@@ -74,7 +74,8 @@ def timeit_helper():
     run_num = 3
     result = t.repeat(repeat=repeat_num, number=run_num)
     result = [number/float(run_num) for number in result]
-    print(f'Best time across {repeat_num} repeats of {run_num} runs per repeat: {min(result)} sec')
+    print(f'Best time across {repeat_num} repeats of {run_num} runs per')
+    print(f'repeat: {min(result)} sec')
     return min(result)
 
 
