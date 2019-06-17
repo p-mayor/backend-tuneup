@@ -18,7 +18,7 @@ def profile(func):
         pr.disable()
         sortby = 'cumulative'
         ps = pstats.Stats(pr).sort_stats(sortby)
-        ps.print_stats()
+        ps.print_stats(10)
         return result
     return inner
 
@@ -59,7 +59,8 @@ def find_duplicate_movies(src):
         else:
             seen[movie] = 1
 
-    print(duplicates)
+    # print(duplicates)
+    print('Found {} duplicate movies:'.format(len(duplicates)))
 
 
 @profile
@@ -69,7 +70,6 @@ def timeit_helper():
     setup = 'from __main__ import find_duplicate_movies'
     """Computes a list of duplicate movie entries"""
     t = timeit.Timer("find_duplicate_movies('movies.txt')", setup)
-    print(t)
     repeat_num = 3
     run_num = 3
     result = t.repeat(repeat=repeat_num, number=run_num)
@@ -80,9 +80,7 @@ def timeit_helper():
 
 
 def main():
-    result = timeit_helper()
-    # print('Found {} duplicate movies:'.format(len(result)))
-    print(result)
+    timeit_helper()
 
 
 if __name__ == '__main__':
